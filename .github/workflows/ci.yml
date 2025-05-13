@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "**" ]
+    branches: ["**"]
   pull_request:
-    branches: [ "**" ]
+    branches: ["**"]
 
 jobs:
   build-and-test:
@@ -31,7 +31,7 @@ jobs:
         run: npm install
 
       - name: 🧪 Rodar testes
-        run: npm test
+        run: CI=true npm test -- --watchAll=false
 
       - name: 🛠️ Rodar build
         run: npm run build
