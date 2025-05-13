@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import HeroSection from "../HeroSection";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 describe("HeroSection", () => {
   it("deve renderizar o título principal com saudação", () => {
