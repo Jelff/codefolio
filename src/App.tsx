@@ -11,9 +11,6 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/about" element={<About />} />
-        <Route path="/experience" element={<Experience />} /> */}
-        {/* Se usar páginas dinâmicas, você pode adicionar uma rota com :slug aqui */}
       </Routes>
       <Footer />
     </BrowserRouter>
