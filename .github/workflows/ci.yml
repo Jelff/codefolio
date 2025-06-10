@@ -11,27 +11,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔄 Checkout do código
+      - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: 🔧 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: 🧹 Limpar cache do npm
-        run: npm cache clean --force
-
-      - name: 🗑️ Remover node_modules e package-lock.json
-        run: |
-          rm -rf node_modules
-          rm package-lock.json
-
-      - name: 📦 Instalar dependências
+      - name: Instalar dependências
         run: npm install
 
-      - name: 🧪 Rodar testes
+      
+
+      - name: Rodar testes
         run: CI=true npm test -- --watchAll=false
 
-      - name: 🛠️ Rodar build
+      - name: Rodar build
         run: npm run build
