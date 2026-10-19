@@ -17,7 +17,7 @@ export default function App() {
 function Portfolio() {
   const { ui } = useLanguage();
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <a href="#main-content" className="skip-link">
         {ui.skip}
       </a>

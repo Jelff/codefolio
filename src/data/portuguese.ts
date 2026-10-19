@@ -5,7 +5,7 @@ export const personal: typeof english.personal = {
   ...english.personal,
   role: "Engenheiro de Software · Desenvolvedor Full Stack",
   introduction:
-    "Desenvolvo produtos digitais confiáveis, unindo engenharia full stack, inteligência artificial e boas práticas de software.",
+    "Sou Jefferson Mendonça, engenheiro de software em Natal. Desenvolvo aplicações full stack com React, TypeScript e NestJS e, no Senac RN, conecto inteligência artificial ao conhecimento institucional para criar soluções úteis no dia a dia das pessoas.",
   location: "Natal, RN — Brasil",
   resume: "/jefferson-mendonca-resume-pt.pdf",
   about: [

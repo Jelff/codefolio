@@ -8,5 +8,13 @@ export const LanguageContext = createContext<{
 
 export function useLanguage() {
   const context = useContext(LanguageContext);
-  return { ...context, ...content[context.language] };
+  const localizedContent = content[context.language];
+  return {
+    ...context,
+    ...localizedContent,
+    personal: {
+      ...localizedContent.personal,
+      resume: `${import.meta.env.BASE_URL}${localizedContent.personal.resume.replace(/^\//, "")}`,
+    },
+  };
 }

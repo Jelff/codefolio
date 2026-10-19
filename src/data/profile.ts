@@ -2,7 +2,7 @@ export const personal = {
   name: "Jefferson B. Mendonça",
   role: "Software Engineer · Full Stack Developer",
   introduction:
-    "I build reliable digital products, connecting full-stack engineering, artificial intelligence and thoughtful software practices.",
+    "I’m Jefferson Mendonça, a software engineer based in Natal, Brazil. I build full-stack applications with React, TypeScript and NestJS. At Senac RN, I connect artificial intelligence with institutional knowledge to create useful tools for people’s everyday work.",
   location: "Natal, RN — Brazil",
   email: "jelffdev@gmail.com",
   resume: "/jefferson-mendonca-resume-en.pdf",
