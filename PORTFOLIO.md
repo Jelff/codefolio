@@ -30,7 +30,7 @@ ESLint, Prettier, duplication detection and the production build.
 - `public/jefferson-mendonca-resume-en.pdf`: supplied English résumé, used in the
   English version.
 - `src/data/portuguese.ts`: Portuguese profile and case-study content.
-- `src/i18n/`: typed bilingual content and language context. The fixed bottom-right
+- `src/i18n/`: typed bilingual content and language context. The fixed top-right
   control switches all pages without changing routes. The choice persists in
   local storage; Portuguese is the default when no preference exists or storage
   is unavailable. Language changes update document language, titles, metadata and

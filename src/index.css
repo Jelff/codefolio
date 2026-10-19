@@ -94,6 +94,7 @@ section {
   text-decoration-color: var(--color-muted);
 }
 .mobile-navigation {
+  padding-top: 3rem;
   text-align: right;
 }
 .mobile-navigation button {
@@ -371,7 +372,7 @@ a:focus-visible .arrow {
 .language-switcher {
   position: fixed;
   right: max(1rem, env(safe-area-inset-right));
-  bottom: max(1rem, env(safe-area-inset-bottom));
+  top: max(1rem, env(safe-area-inset-top));
   z-index: 20;
   min-height: 44px;
   padding: 0.6rem 1rem;
@@ -385,10 +386,4 @@ a:focus-visible .arrow {
 }
 .language-switcher:hover {
   border-color: var(--color-muted);
-}
-.main-content {
-  padding-bottom: 5rem;
-}
-.hero-arrow {
-  bottom: 5.5rem;
 }
