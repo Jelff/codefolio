@@ -11,7 +11,7 @@ export const personal = {
     { label: "GitHub", href: "https://github.com/Jelff" },
   ],
   about: [
-    "I’m a software engineer based in Natal, Brazil, working across frontend, backend and AI-powered applications. At Senac RN’s Technology Innovation Environment, I develop institutional software and help shape the engineering practices behind it.",
+    "I’m Jefferson Mendonça, a software engineer with experience in web and mobile development, artificial intelligence and automation. I work across frontend and backend, focusing on code quality, clear interfaces and reliable systems.",
     "My work connects interfaces to the systems that make them useful: institutional knowledge through retrieval-augmented generation, real-time AI responses, backend services and automated delivery pipelines. I take part in architectural decisions and build with React, TypeScript and NestJS.",
     "Quality also lives in how a team works. I establish development standards, document delivery processes and use end-to-end tests to validate real user journeys. Earlier roles in public-sector web systems and mobile applications taught me to adapt these practices to different products and people.",
   ],

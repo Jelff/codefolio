@@ -9,7 +9,7 @@ export const personal: typeof english.personal = {
   location: "Natal, RN — Brasil",
   resume: "/jefferson-mendonca-resume-pt.pdf",
   about: [
-    "Sou engenheiro de software em Natal, com atuação em frontend, backend e aplicações com inteligência artificial. No Ambiente de Inovação Tecnológica do Senac RN, desenvolvo software institucional e contribuo para as práticas de engenharia que sustentam esses produtos.",
+    "Sou Jefferson Mendonça, engenheiro de software com experiência em desenvolvimento web e mobile, inteligência artificial e automação. Atuo do frontend ao backend, com foco em qualidade de código, interfaces claras e sistemas confiáveis.",
     "Meu trabalho conecta interfaces aos sistemas que as tornam úteis: conhecimento institucional por meio de geração aumentada por recuperação (RAG), respostas de IA em tempo real, serviços backend e fluxos automatizados de entrega. Participo de decisões de arquitetura e desenvolvo com React, TypeScript e NestJS.",
     "A qualidade também está na forma como uma equipe trabalha. Defino padrões de desenvolvimento, documento processos de entrega e utilizo testes de ponta a ponta para validar jornadas reais. Experiências anteriores com sistemas públicos e aplicativos móveis me ensinaram a adaptar essas práticas a diferentes produtos e pessoas.",
   ],
