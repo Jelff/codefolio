@@ -1,20 +1,35 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Home from "./pages/Home/home";
-// import About from "./pages/About/about";
-// import Experience from "./pages/Experience";
+import { LanguageProvider } from "./i18n/LanguageProvider";
+import { useLanguage } from "./i18n/context";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Navigation } from "./components/Navigation";
+import { Home } from "./pages/Home";
+import { NotFound, ProjectDetail } from "./pages/ProjectDetail";
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <LanguageProvider>
+      <Portfolio />
+    </LanguageProvider>
   );
 }
 
-export default App;
+function Portfolio() {
+  const { ui } = useLanguage();
+  return (
+    <BrowserRouter>
+      <a href="#main-content" className="skip-link">
+        {ui.skip}
+      </a>
+      <Navigation />
+      <LanguageSwitcher />
+      <main id="main-content" tabIndex={-1} className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/work/:slug" element={<ProjectDetail />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+    </BrowserRouter>
+  );
+}

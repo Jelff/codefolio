@@ -1,0 +1,13 @@
+{
+  "threshold": 10,
+  "minLines": 5,
+  "minTokens": 50,
+  "reporters": [
+    "console",
+    "json"
+  ],
+  "output": "reports/jscpd",
+  "ignore": [
+    "**/*.d.ts"
+  ]
+}

@@ -2,36 +2,47 @@ name: CI
 
 on:
   push:
-    branches: ["**"]
+    branches: [main, develop]
   pull_request:
-    branches: ["**"]
+    branches: [main, develop]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
 
 jobs:
-  build-and-test:
+  pipeline:
+    name: Pipeline FULL
     runs-on: ubuntu-latest
-
     steps:
-      - name: 🔄 Checkout do código
-        uses: actions/checkout@v3
-
-      - name: 🔧 Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Executar pipeline completo
+        run: npm run ci:local
+        env:
+          FORCE_COLOR: "1"
+      - name: Relatório de duplicação
+        if: ${{ !cancelled() && hashFiles('reports/jscpd/**') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: duplication-report
+          path: reports/jscpd/
+          if-no-files-found: error
 
-      - name: 🧹 Limpar cache do npm
-        run: npm cache clean --force
-
-      - name: 🗑️ Remover node_modules e package-lock.json
+  pipeline-status:
+    name: Resultado do pipeline
+    if: ${{ always() }}
+    needs: pipeline
+    runs-on: ubuntu-latest
+    env:
+      PIPELINE_RESULT: ${{ needs.pipeline.result }}
+    steps:
+      - name: Consolidar resultados obrigatórios
         run: |
-          rm -rf node_modules
-          rm package-lock.json
-
-      - name: 📦 Instalar dependências
-        run: npm install
-
-      - name: 🧪 Rodar testes
-        run: CI=true npm test -- --watchAll=false
-
-      - name: 🛠️ Rodar build
-        run: npm run build
+          echo "Pipeline FULL: $PIPELINE_RESULT"
+          if [[ "$PIPELINE_RESULT" != "success" ]]; then
+            exit 1
+          fi
