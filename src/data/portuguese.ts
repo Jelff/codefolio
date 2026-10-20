@@ -5,13 +5,13 @@ export const personal: typeof english.personal = {
   ...english.personal,
   role: "Engenheiro de Software · Desenvolvedor Full Stack",
   introduction:
-    "Desenvolvo produtos digitais confiáveis, unindo engenharia full stack, inteligência artificial e boas práticas de software.",
+    "Desenvolvo aplicações web com React, TypeScript e NestJS, conectando interfaces, serviços e inteligência artificial.",
   location: "Natal, RN — Brasil",
   resume: "/jefferson-mendonca-resume-pt.pdf",
   about: [
-    "Sou Jefferson Mendonça, engenheiro de software com experiência em desenvolvimento web e mobile, inteligência artificial e automação. Atuo do frontend ao backend, com foco em qualidade de código, interfaces claras e sistemas confiáveis.",
-    "Meu trabalho conecta interfaces aos sistemas que as tornam úteis: conhecimento institucional por meio de geração aumentada por recuperação (RAG), respostas de IA em tempo real, serviços backend e fluxos automatizados de entrega. Participo de decisões de arquitetura e desenvolvo com React, TypeScript e NestJS.",
-    "A qualidade também está na forma como uma equipe trabalha. Defino padrões de desenvolvimento, documento processos de entrega e utilizo testes de ponta a ponta para validar jornadas reais. Experiências anteriores com sistemas públicos e aplicativos móveis me ensinaram a adaptar essas práticas a diferentes produtos e pessoas.",
+    "Sou Jefferson Mendonça, engenheiro de software em Natal, RN. Atuo no desenvolvimento full stack de aplicações web, com experiência também em mobile, inteligência artificial e automação.",
+    "No Senac RN, desenvolvo soluções institucionais que conectam pessoas à informação. Trabalho com React, TypeScript e NestJS, integrando serviços backend, respostas de IA em tempo real e recuperação de conhecimento com RAG.",
+    "Além da implementação, contribuo para decisões de arquitetura, padrões de desenvolvimento e processos de entrega. Uso revisão de código, documentação e testes de ponta a ponta para dar suporte à evolução dos sistemas e ao trabalho da equipe.",
   ],
   philosophy:
     "Interfaces bem pensadas. Sistemas confiáveis. Padrões de engenharia compartilhados.",
@@ -102,63 +102,50 @@ const translatedProjects: Record<
     period: "Reconhecido em 2026",
     category: "Plataforma institucional de IA",
     summary:
-      "Conectando conhecimento institucional a assistentes conversacionais por meio de geração aumentada por recuperação.",
+      "Uma plataforma de IA que conecta assistentes conversacionais ao conhecimento institucional por meio de geração aumentada por recuperação (RAG).",
     role: "Desenvolvimento full stack · Integrações de IA · CI/CD",
     sections: [
       {
         title: "Contexto e propósito",
-        body: "Desenvolvido no Ambiente de Inovação Tecnológica do Senac RN, o Sofia IA Hub leva conhecimento institucional a assistentes conversacionais. Seu propósito é conectar esses assistentes às informações da organização por meio de geração aumentada por recuperação (RAG).",
+        body: "Desenvolvido no Ambiente de Inovação Tecnológica do Senac RN, o Sofia IA Hub conecta assistentes conversacionais ao conhecimento institucional. A geração aumentada por recuperação (RAG) incorpora informações da organização às consultas com inteligência artificial.",
       },
       {
         title: "Minha contribuição",
-        body: "Desenvolvi a plataforma atuando em funcionalidades frontend, integrações backend, fluxos de IA e processos de CI/CD. Meu trabalho conectou a experiência do usuário aos serviços que processam e entregam respostas de inteligência artificial.",
+        body: "Atuei no frontend, nas integrações backend, nos fluxos de IA e nos processos de CI/CD, conectando a interface aos serviços que processam e entregam as respostas.",
       },
       {
         title: "Engenharia da solução",
-        body: "A stack documentada combina React e TypeScript no frontend, NestJS e PostgreSQL no backend, RAG para recuperação de conhecimento institucional e Docker. O currículo também descreve decisões de arquitetura em camadas, respostas de IA em tempo real e entregas automatizadas como parte da minha atuação no Senac.",
+        body: "A plataforma combina React e TypeScript no frontend, NestJS e PostgreSQL no backend e RAG para recuperar conhecimento institucional. Docker e CI/CD apoiam o fluxo de entrega da aplicação.",
       },
       {
-        title: "Foco técnico",
-        body: "A implementação reuniu frontend, backend e serviços de processamento de IA. Conectar essas partes, lidar com respostas em streaming e construir fluxos de entrega reproduzíveis foram áreas centrais do trabalho. Os detalhes das escolhas técnicas ainda não estão documentados neste estudo de caso.",
-      },
-      {
-        title: "Reconhecimento e impacto",
-        body: "O Sofia IA Hub conquistou o primeiro lugar estadual e o quarto lugar nacional no Prêmio IEL de Talentos 2026. Ele integra as soluções institucionais que desenvolvi no Senac RN, cujo alcance conjunto ultrapassa 5.000 usuários; esse número não representa a quantidade de usuários exclusiva do Sofia.",
+        title: "Reconhecimento",
+        body: "O Sofia IA Hub conquistou o primeiro lugar estadual e o quarto lugar nacional no Prêmio IEL de Talentos 2026, em reconhecimento ao trabalho com inteligência artificial no contexto institucional.",
       },
     ],
-    editorialNote:
-      "Estudo de caso baseado no currículo profissional. Datas do projeto, diagramas de arquitetura, detalhes das escolhas técnicas e links públicos de repositórios ou demonstrações não foram fornecidos. Materiais técnicos adicionais aguardam documentação.",
   },
   "direito-ai": {
-    period: "Data não documentada",
     category: "Consulta jurídica com IA",
     summary:
-      "Um assistente de IA full stack para consultas trabalhistas, combinando análise de documentos e acesso autenticado.",
+      "Um assistente de IA para consultas trabalhistas, com análise de documentos e acesso autenticado.",
     role: "Desenvolvimento full stack",
     sections: [
       {
         title: "Contexto e propósito",
-        body: "O DireitoAI é uma aplicação de inteligência artificial para consultas jurídicas trabalhistas. O projeto reúne geração aumentada por recuperação e análise de documentos em uma experiência full stack de consulta a informações jurídicas.",
+        body: "O DireitoAI apoia consultas sobre direito trabalhista com inteligência artificial. A aplicação combina geração aumentada por recuperação (RAG) e análise de documentos em uma experiência com acesso autenticado.",
       },
       {
         title: "Minha contribuição",
-        body: "Desenvolvi a aplicação full stack, incluindo autenticação Gov.br, JWT, análise de documentos e pipelines automatizados. O trabalho abrange a interface, as integrações backend e o fluxo de entrega.",
+        body: "Desenvolvi o frontend e as integrações backend, incluindo autenticação gov.br, JWT, análise de documentos e pipelines de entrega automatizados.",
       },
       {
         title: "Engenharia da solução",
-        body: "O frontend utiliza React e o backend, Node.js. A solução documentada utiliza RAG, autenticação Gov.br e JWT, com Docker e CI/CD para entregas automatizadas. O currículo não especifica a infraestrutura de recuperação nem o provedor do modelo de IA.",
-      },
-      {
-        title: "Foco técnico",
-        body: "O escopo documentado combina acesso autenticado, processamento de documentos e consultas assistidas por IA. Decisões detalhadas de segurança, avaliação da recuperação e topologia de implantação ainda precisam ser documentadas; nenhuma implementação específica é presumida aqui.",
+        body: "O frontend utiliza React e o backend, Node.js. A solução reúne RAG nas consultas com IA, gov.br e JWT na autenticação, além de Docker e CI/CD no fluxo de entrega.",
       },
       {
         title: "Resultado",
-        body: "Foi desenvolvida uma aplicação full stack de IA para consultas jurídicas trabalhistas. Números de adoção, resultados mensurados e informações de lançamento público não constam no currículo de referência.",
+        body: "O resultado é uma aplicação full stack que reúne acesso autenticado, análise de documentos e consultas trabalhistas com IA em uma única experiência.",
       },
     ],
-    editorialNote:
-      "Estudo de caso baseado no currículo profissional. Datas do projeto, capturas de tela, resultados mensurados e links públicos de repositórios ou demonstrações não foram fornecidos. Materiais técnicos adicionais aguardam documentação.",
   },
 };
 export const projects: Project[] = englishProjects.map((project) => ({

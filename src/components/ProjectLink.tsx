@@ -30,7 +30,7 @@ export function ProjectLink({
           </Link>
         </h3>
         <p className="project-meta">
-          {project.period} <span aria-hidden="true">·</span> {project.category}
+          {[project.category, project.period].filter(Boolean).join(" · ")}
         </p>
         {detailed && (
           <>

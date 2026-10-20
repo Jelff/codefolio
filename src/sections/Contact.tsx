@@ -42,6 +42,9 @@ export function Contact() {
           © {new Date().getFullYear()} {personal.name}
         </p>
         <p>{personal.location}</p>
+        <a href="#main-content" className="footer-top">
+          {ui.backTop} ↑
+        </a>
       </footer>
     </Section>
   );

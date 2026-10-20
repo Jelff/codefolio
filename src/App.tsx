@@ -1,6 +1,6 @@
 import { LanguageProvider } from "./i18n/LanguageProvider";
 import { useLanguage } from "./i18n/context";
-import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import { useReadingProgress } from "./hooks/useReadingProgress";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { Home } from "./pages/Home";
@@ -21,8 +21,9 @@ function Portfolio() {
       <a href="#main-content" className="skip-link">
         {ui.skip}
       </a>
+      <ReadingProgress />
       <Navigation />
-      <LanguageSwitcher />
+
       <main id="main-content" tabIndex={-1} className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -32,4 +33,9 @@ function Portfolio() {
       </main>
     </BrowserRouter>
   );
+}
+
+function ReadingProgress() {
+  useReadingProgress();
+  return null;
 }

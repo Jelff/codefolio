@@ -12,6 +12,7 @@ export function Section({
   return (
     <section
       id={id}
+      tabIndex={-1}
       aria-labelledby={`${id}-title`}
       className="editorial-section"
     >

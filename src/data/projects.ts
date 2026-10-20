@@ -5,16 +5,14 @@ interface CaseSection {
 export interface Project {
   slug: string;
   name: string;
-  period: string;
+  period?: string;
   category: string;
   summary: string;
   role: string;
   technologies: string[];
   sections: CaseSection[];
-  editorialNote: string;
 }
-// Missing dates, technical details and public URLs are explicitly documented,
-// rather than inferred from employment dates or presented as verified facts.
+// Publish only supplied project facts; omit unknown dates and unavailable links.
 export const projects: Project[] = [
   {
     slug: "sofia-ia-hub",
@@ -22,7 +20,7 @@ export const projects: Project[] = [
     period: "Recognized in 2026",
     category: "Institutional AI platform",
     summary:
-      "Connecting institutional knowledge to conversational AI assistants through retrieval-augmented generation.",
+      "An institutional AI platform that connects conversational assistants to organizational knowledge through retrieval-augmented generation (RAG).",
     role: "Full-stack development · AI integrations · CI/CD",
     technologies: [
       "React",
@@ -35,60 +33,47 @@ export const projects: Project[] = [
     sections: [
       {
         title: "Context & purpose",
-        body: "Developed at Senac RN’s Technology Innovation Environment, Sofia IA Hub brings institutional knowledge into conversational assistants. Its purpose is to connect these assistants to organizational information through retrieval-augmented generation (RAG).",
+        body: "Developed at Senac RN’s Technology Innovation Environment, Sofia IA Hub connects conversational assistants to institutional knowledge. Retrieval-augmented generation (RAG) brings organizational information into AI-assisted queries.",
       },
       {
         title: "My contribution",
-        body: "I developed the platform across frontend features, backend integrations, AI workflows and CI/CD processes. My work connected the user-facing experience with the services that process and deliver AI responses.",
+        body: "I worked across the frontend, backend integrations, AI workflows and CI/CD processes, connecting the interface to the services that process and deliver responses.",
       },
       {
         title: "Engineering the solution",
-        body: "The documented stack combines React and TypeScript on the frontend, NestJS and PostgreSQL on the backend, RAG for institutional knowledge retrieval and Docker. The résumé also describes layered architecture decisions, real-time AI response streaming and automated delivery as part of my work at Senac.",
+        body: "The platform combines React and TypeScript on the frontend, NestJS and PostgreSQL on the backend, and RAG for institutional knowledge retrieval. Docker and CI/CD support the delivery workflow.",
       },
       {
-        title: "Technical focus",
-        body: "The implementation brought together frontend, backend and AI processing services. Connecting these parts, handling streamed responses and building repeatable delivery workflows were core areas of engineering work. Detailed implementation trade-offs are not yet documented in this case study.",
-      },
-      {
-        title: "Recognition & impact",
-        body: "Sofia IA Hub earned first place at state level and fourth place nationally in the 2026 IEL Talent Award. It is part of the institutional software I developed at Senac RN, whose combined reach exceeds 5,000 users; that figure is not a Sofia-specific user count.",
+        title: "Recognition",
+        body: "Sofia IA Hub earned first place at state level and fourth place nationally in the 2026 IEL Talent Award, recognizing the work on institutional artificial intelligence.",
       },
     ],
-    editorialNote:
-      "Case study based on the professional résumé. Project dates, architecture diagrams, implementation trade-offs and public repository or demo links are not provided. Additional technical materials are pending documentation.",
   },
   {
     slug: "direito-ai",
     name: "DireitoAI",
-    period: "Date not documented",
     category: "AI-assisted legal research",
     summary:
-      "A full-stack AI assistant for labor-law queries, combining document analysis and authenticated access.",
+      "An AI assistant for labor-law queries, with document analysis and authenticated access.",
     role: "Full-stack development",
     technologies: ["React", "Node.js", "RAG", "JWT", "Docker", "CI/CD"],
     sections: [
       {
         title: "Context & purpose",
-        body: "DireitoAI is an AI application for labor-law queries. The project brings retrieval-augmented generation and document analysis into a full-stack experience for consulting legal information.",
+        body: "DireitoAI supports labor-law queries through artificial intelligence. The application combines retrieval-augmented generation (RAG) and document analysis in an authenticated experience.",
       },
       {
         title: "My contribution",
-        body: "I developed the full-stack application, including Gov.br authentication, JWT, document analysis and automated pipelines. The work spans the interface, backend integration and delivery workflow.",
+        body: "I developed the frontend and backend integrations, including gov.br authentication, JWT, document analysis and automated delivery pipelines.",
       },
       {
         title: "Engineering the solution",
-        body: "React provides the frontend and Node.js supports the backend. The documented solution uses RAG, Gov.br authentication and JWT, with Docker and CI/CD for automated delivery. The résumé does not specify the retrieval infrastructure or AI model provider.",
-      },
-      {
-        title: "Technical focus",
-        body: "The documented scope combines authenticated access, document processing and AI-assisted queries. Detailed security decisions, retrieval evaluation and deployment topology remain to be documented; no specific implementation is assumed here.",
+        body: "React provides the frontend and Node.js supports the backend. The solution uses RAG for AI-assisted queries, gov.br and JWT for authentication, and Docker and CI/CD in the delivery workflow.",
       },
       {
         title: "Outcome",
-        body: "A full-stack AI application for labor-law consultation was developed. Adoption figures, measured outcomes and public release details are not included in the source résumé.",
+        body: "The result is a full-stack application that brings authenticated access, document analysis and AI-assisted labor-law queries into one experience.",
       },
     ],
-    editorialNote:
-      "Case study based on the professional résumé. Project dates, screenshots, measured results and public repository or demo links are not provided. Additional technical materials are pending documentation.",
   },
 ];

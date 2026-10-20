@@ -1,16 +1,19 @@
 import { useLanguage } from "../i18n/context";
 import { Section } from "../components/Section";
-import { ProjectLink } from "../components/ProjectLink";
+import { ProjectShowcase } from "../components/ProjectShowcase";
 
 export function About() {
   const { personal, ui } = useLanguage();
   return (
     <Section id="about" title={ui.about}>
-      <div className="prose-editorial">
-        {personal.about.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-        <p className="text-muted italic">{personal.philosophy}</p>
+      <div className="about-layout">
+        <p className="section-intro">{ui.approach}</p>
+        <div className="prose-editorial">
+          {personal.about.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+          <p className="text-muted italic">{personal.philosophy}</p>
+        </div>
       </div>
     </Section>
   );
@@ -22,12 +25,7 @@ export function Work() {
       <p className="section-intro">{ui.workIntro}</p>
       <div>
         {projects.map((project, index) => (
-          <ProjectLink
-            key={project.slug}
-            project={project}
-            detailed
-            index={index}
-          />
+          <ProjectShowcase key={project.slug} project={project} index={index} />
         ))}
       </div>
     </Section>

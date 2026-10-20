@@ -2,7 +2,7 @@ export const personal = {
   name: "Jefferson B. Mendonça",
   role: "Software Engineer · Full Stack Developer",
   introduction:
-    "I build reliable digital products, connecting full-stack engineering, artificial intelligence and thoughtful software practices.",
+    "I build web applications with React, TypeScript and NestJS, connecting interfaces, services and artificial intelligence.",
   location: "Natal, RN — Brazil",
   email: "jelffdev@gmail.com",
   resume: "/jefferson-mendonca-resume-en.pdf",
@@ -11,9 +11,9 @@ export const personal = {
     { label: "GitHub", href: "https://github.com/Jelff" },
   ],
   about: [
-    "I’m Jefferson Mendonça, a software engineer with experience in web and mobile development, artificial intelligence and automation. I work across frontend and backend, focusing on code quality, clear interfaces and reliable systems.",
-    "My work connects interfaces to the systems that make them useful: institutional knowledge through retrieval-augmented generation, real-time AI responses, backend services and automated delivery pipelines. I take part in architectural decisions and build with React, TypeScript and NestJS.",
-    "Quality also lives in how a team works. I establish development standards, document delivery processes and use end-to-end tests to validate real user journeys. Earlier roles in public-sector web systems and mobile applications taught me to adapt these practices to different products and people.",
+    "I’m Jefferson Mendonça, a software engineer based in Natal, Brazil. I work across the frontend and backend of web applications, with experience in mobile development, artificial intelligence and automation.",
+    "At Senac RN, I develop institutional software that connects people to information. I work with React, TypeScript and NestJS, integrating backend services, real-time AI responses and knowledge retrieval through RAG.",
+    "Beyond implementation, I contribute to architectural decisions, development standards and delivery processes. I use code review, documentation and end-to-end tests to support the evolution of our systems and the team’s work.",
   ],
   philosophy:
     "Thoughtful interfaces. Dependable systems. Shared engineering standards.",

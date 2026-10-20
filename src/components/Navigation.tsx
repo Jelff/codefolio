@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../i18n/context";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
-const items = ["about", "work", "experience", "contact"] as const;
+const items = ["work", "about", "experience", "contact"] as const;
 
 function NavigationLinks({ onNavigate }: { onNavigate?: () => void }) {
   const { pathname } = useLocation();
@@ -15,76 +16,106 @@ function NavigationLinks({ onNavigate }: { onNavigate?: () => void }) {
           if (entry.isIntersecting) setActive(entry.target.id);
         }
       },
-      { rootMargin: "-10% 0px -55% 0px", threshold: 0 },
+      { rootMargin: "-15% 0px -50% 0px", threshold: 0 },
     );
     for (const item of items) {
-      const section = document.getElementById(item.toLowerCase());
+      const section = document.getElementById(item);
       if (section) observer.observe(section);
     }
     return () => observer.disconnect();
   }, [pathname]);
-  return items.map((item) => {
-    const id = item.toLowerCase();
-    const current = pathname.startsWith("/work/")
-      ? id === "work"
-      : active === id;
-    return (
-      <Link
-        key={id}
-        to={`/#${id}`}
-        onClick={onNavigate}
-        aria-current={current ? "location" : undefined}
-        className="nav-link"
-      >
-        {ui[item]}
-      </Link>
-    );
-  });
+  return items.map((id) => (
+    <Link
+      key={id}
+      to={`/#${id}`}
+      onClick={onNavigate}
+      aria-current={
+        pathname.startsWith("/work/")
+          ? id === "work"
+            ? "location"
+            : undefined
+          : active === id
+            ? "location"
+            : undefined
+      }
+      className="nav-link"
+    >
+      {ui[id]}
+    </Link>
+  ));
 }
 
 export function Navigation() {
   const { personal, ui } = useLanguage();
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const observer = new ResizeObserver(() => {
+      document.documentElement.style.setProperty(
+        "--header-offset",
+        `${header.getBoundingClientRect().height}px`,
+      );
+    });
+    observer.observe(header);
+    return () => {
+      observer.disconnect();
+      document.documentElement.style.removeProperty("--header-offset");
+    };
+  }, []);
   return (
-    <header className="sidebar entrance">
+    <header ref={headerRef} className="site-header">
       <Link
         to="/"
         className="identity"
         onClick={() => setOpen(false)}
         aria-label={`${personal.name} — ${ui.home}`}
       >
-        Jefferson B.
-        <br />
-        Mendonça
+        <span className="identity-monogram" aria-hidden="true">
+          jm<span>.</span>
+        </span>
+        <span className="identity-name hidden lg:block">
+          Jefferson
+          <br />
+          Mendonça
+        </span>
       </Link>
-      <nav
-        aria-label={ui.mainNavigation}
-        className="hidden md:flex md:flex-col"
-      >
+      <nav aria-label={ui.mainNavigation} className="hidden xl:flex xl:gap-7">
         <NavigationLinks />
       </nav>
-      <div
-        className="mobile-navigation md:hidden"
-        onKeyDown={(event) => {
-          if (event.key === "Escape") {
-            setOpen(false);
-            document.getElementById("menu-toggle")?.focus();
-          }
-        }}
-      >
-        <button
-          id="menu-toggle"
-          type="button"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen(!open)}
+      <div className="header-actions">
+        <LanguageSwitcher />
+        <div
+          className="xl:hidden"
+          onKeyDown={(event) => {
+            if (event.key === "Escape") {
+              setOpen(false);
+              document.getElementById("menu-toggle")?.focus();
+            }
+          }}
         >
-          {open ? ui.close : ui.menu}
-        </button>
-        <nav id="mobile-menu" aria-label={ui.mobileNavigation} hidden={!open}>
-          <NavigationLinks onNavigate={() => setOpen(false)} />
-        </nav>
+          <button
+            id="menu-toggle"
+            type="button"
+            className="menu-toggle"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? ui.close : ui.menu}
+          </button>
+          <nav
+            id="mobile-menu"
+            className="mobile-navigation"
+            aria-label={ui.mobileNavigation}
+            hidden={!open}
+          >
+            <NavigationLinks onNavigate={() => setOpen(false)} />
+          </nav>
+        </div>
       </div>
+      <div className="reading-progress" aria-hidden="true" />
     </header>
   );
 }

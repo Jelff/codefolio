@@ -19,7 +19,7 @@ export function ProjectDetail() {
           ← {ui.allWork}
         </Link>
         <p className="mb-6 text-sm text-muted">
-          {project.category} · {project.period}
+          {[project.category, project.period].filter(Boolean).join(" · ")}
         </p>
         <h1 className="case-title">{project.name}</h1>
         <p className="mt-8 max-w-2xl text-xl leading-relaxed">
@@ -45,18 +45,14 @@ export function ProjectDetail() {
           <p className="prose-editorial">{section.body}</p>
         </Section>
       ))}
-      <Section id="project-materials" title={ui.materials}>
-        <p className="max-w-2xl leading-relaxed text-muted">
-          {project.editorialNote}
-        </p>
-        <p className="mt-4 text-sm text-muted">{ui.placeholder}</p>
-        {next && (
-          <Link to={`/work/${next.slug}`} className="text-link mt-12">
+      {next && (
+        <nav className="editorial-section" aria-label={ui.projectNavigation}>
+          <Link to={`/work/${next.slug}`} className="text-link">
             {ui.nextCase} {next.name}
             <Arrow />
           </Link>
-        )}
-      </Section>
+        </nav>
+      )}
       <Contact />
     </div>
   );

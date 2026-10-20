@@ -2,14 +2,16 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export function usePageNavigation(title: string) {
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, key } = useLocation();
   useEffect(() => {
     document.title = title;
   }, [title]);
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       if (hash) {
-        document.getElementById(hash.slice(1))?.scrollIntoView();
+        const target = document.getElementById(hash.slice(1));
+        target?.scrollIntoView();
+        target?.focus({ preventScroll: true });
       } else {
         window.scrollTo({ top: 0, behavior: "instant" });
         document
@@ -18,5 +20,5 @@ export function usePageNavigation(title: string) {
       }
     });
     return () => cancelAnimationFrame(frame);
-  }, [pathname, hash]);
+  }, [pathname, hash, key]);
 }

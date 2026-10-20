@@ -1,54 +1,45 @@
 import { useLanguage } from "../i18n/context";
 import { Arrow } from "../components/Arrow";
 import { LocalTime } from "../components/LocalTime";
-import { ProjectLink } from "../components/ProjectLink";
 
 export function Hero() {
-  const { personal, projects, ui } = useLanguage();
+  const { personal, ui } = useLanguage();
   return (
-    <section className="hero" aria-label={ui.introduction}>
-      <div className="hero-intro entrance">
-        <h1 className="mb-6 text-sm text-muted">{personal.role}</h1>
-        <p className="intro-copy">{personal.introduction}</p>
-        <a href="#about" className="text-link mt-6">
-          {ui.aboutMe} <Arrow />
-        </a>
+    <section id="top" className="hero" aria-label={ui.introduction}>
+      <div className="hero-overline eyebrow entrance">
+        <span>{ui.portfolio}</span>
+        <span>{personal.location}</span>
       </div>
-      <div className="hero-contact entrance">
-        <a
-          href="#contact"
-          className="contact-heading group"
-          aria-label={ui.contactLabel}
-        >
-          {ui.contactFirst}
-          <br />
-          {ui.contactSecond}
-          <span className="sr-only">.</span>
-        </a>
-        <div className="hero-location text-sm text-muted">
-          <p>{personal.location}</p>
-          <LocalTime />
-        </div>
-        <a href="#contact" className="hero-arrow" aria-label={ui.goContact}>
-          <Arrow large />
-        </a>
+      <div className="hero-title entrance">
+        <p className="eyebrow mb-7 text-muted">{personal.role}</p>
+        <h1>
+          {ui.heroFirst}
+          <em>{ui.heroSecond}</em>
+        </h1>
       </div>
-      <div className="hero-work entrance">
-        <h2 className="section-label">{ui.selected}</h2>
-        <div className="space-y-9">
-          {projects.map((project) => (
-            <ProjectLink key={project.slug} project={project} />
-          ))}
+      <div className="hero-bottom entrance">
+        <div className="hero-caption">
+          <span className="editorial-mark" aria-hidden="true">
+            ↳
+          </span>
+          <p>{personal.introduction}</p>
         </div>
-        <div className="mt-12 flex flex-col items-start gap-2">
-          <a href="#work" className="text-link">
+        <div className="hero-actions">
+          <a href="#work" className="primary-link">
             {ui.explore} <Arrow />
           </a>
           <a href={personal.resume} className="text-link" download>
-            {ui.resume} <span className="text-xs">{ui.pdfLanguage}</span>{" "}
+            {ui.resume} <span className="text-xs">{ui.pdfLanguage}</span>
             <Arrow />
           </a>
         </div>
+      </div>
+      <div className="hero-foot eyebrow">
+        <a href="#work" className="scroll-cue">
+          ↓ <span>{ui.scroll}</span>
+        </a>
+        <span className="hidden sm:block">{ui.discipline}</span>
+        <LocalTime />
       </div>
     </section>
   );

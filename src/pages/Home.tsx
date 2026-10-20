@@ -17,8 +17,8 @@ export function Home() {
   return (
     <>
       <Hero />
-      <About />
       <Work />
+      <About />
       <Experience />
       <Education />
       <Skills />
