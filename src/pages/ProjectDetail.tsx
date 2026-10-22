@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useLanguage } from "../i18n/context";
 import { Arrow } from "../components/Arrow";
 import { Section } from "../components/Section";
+import { SofiaPresentation } from "../components/SofiaPresentation";
 import { Contact } from "../sections/Contact";
 import { usePageNavigation } from "../hooks/usePageNavigation";
 
@@ -12,8 +13,10 @@ export function ProjectDetail() {
   usePageNavigation(`${project?.name ?? ui.notFound} — Jefferson B. Mendonça`);
   if (!project) return <NotFoundContent />;
   const next = projects.find((item) => item.slug !== slug);
+  const isSofia = project.slug === "sofia-ia-hub";
+  const sections = isSofia ? project.sections.slice(0, 3) : project.sections;
   return (
-    <div className="route-enter">
+    <div key={project.slug} className="route-enter">
       <div className="editorial-section case-header">
         <Link to="/#work" className="text-link mb-16">
           ← {ui.allWork}
@@ -25,6 +28,7 @@ export function ProjectDetail() {
         <p className="mt-8 max-w-2xl text-xl leading-relaxed">
           {project.summary}
         </p>
+        {isSofia && <SofiaPresentation />}
         <dl className="mt-12 grid gap-8 border-t border-rule pt-8 sm:grid-cols-2">
           <div>
             <dt className="mb-3 text-sm text-muted">{ui.contribution}</dt>
@@ -36,7 +40,7 @@ export function ProjectDetail() {
           </div>
         </dl>
       </div>
-      {project.sections.map((section, index) => (
+      {sections.map((section, index) => (
         <Section
           key={section.title}
           id={`chapter-${index + 1}`}

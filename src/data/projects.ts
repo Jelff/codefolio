@@ -29,11 +29,13 @@ export const projects: Project[] = [
       "PostgreSQL",
       "RAG",
       "Docker",
+      "GitHub Actions (CI/CD)",
+      "Playwright (E2E)",
     ],
     sections: [
       {
         title: "Context & purpose",
-        body: "Developed at Senac RN’s Technology Innovation Environment, Sofia IA Hub connects conversational assistants to institutional knowledge. Retrieval-augmented generation (RAG) brings organizational information into AI-assisted queries.",
+        body: "Developed at Senac RN’s Technology Innovation Environment, Sofia IA Hub connects conversational assistants to institutional knowledge. Retrieval-augmented generation (RAG) brings organizational information into AI-assisted queries. I also defined and implemented the platform’s continuous integration and delivery (CI/CD) processes.",
       },
       {
         title: "My contribution",
@@ -41,7 +43,7 @@ export const projects: Project[] = [
       },
       {
         title: "Engineering the solution",
-        body: "The platform combines React and TypeScript on the frontend, NestJS and PostgreSQL on the backend, and RAG for institutional knowledge retrieval. Docker and CI/CD support the delivery workflow.",
+        body: "The platform combines React and TypeScript on the frontend, NestJS and PostgreSQL on the backend, and RAG for institutional knowledge retrieval. Docker supports containerization, GitHub Actions workflows automate CI/CD pipelines, and Playwright supports end-to-end testing.",
       },
       {
         title: "Recognition",

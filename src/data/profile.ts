@@ -1,3 +1,5 @@
+import { skillIcons } from "./skillIcons";
+
 export const personal = {
   name: "Jefferson B. Mendonça",
   role: "Software Engineer · Full Stack Developer",
@@ -5,6 +7,10 @@ export const personal = {
     "I build web applications with React, TypeScript and NestJS, connecting interfaces, services and artificial intelligence.",
   location: "Natal, RN — Brazil",
   email: "jelffdev@gmail.com",
+  phone: {
+    display: "+55 (84) 98131-1177",
+    international: "5584981311177",
+  },
   resume: "/jefferson-mendonca-resume-en.pdf",
   links: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/jelff" },
@@ -69,7 +75,7 @@ export const education = {
   period: "Expected completion · 2026",
   qualification: "Undergraduate technology degree (TADS)",
 };
-export const skills: { category: string; items: string[] }[] = [
+const skillGroups: { category: string; items: string[] }[] = [
   {
     category: "Frontend engineering",
     items: [
@@ -149,6 +155,12 @@ export const skills: { category: string; items: string[] }[] = [
     ],
   },
 ];
+export const skills = skillGroups.map(({ category, items }) => ({
+  category,
+  items: items.map((label) => ({ label, icons: skillIcons[label] ?? [] })),
+}));
+export type SkillGroup = (typeof skills)[number];
+
 export const recognition = {
   title: "IEL Talent Award",
   year: "2026",

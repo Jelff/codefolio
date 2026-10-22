@@ -11,10 +11,10 @@ export const personal: typeof english.personal = {
   about: [
     "Sou Jefferson Mendonça, engenheiro de software em Natal, RN. Atuo no desenvolvimento full stack de aplicações web, com experiência também em mobile, inteligência artificial e automação.",
     "No Senac RN, desenvolvo soluções institucionais que conectam pessoas à informação. Trabalho com React, TypeScript e NestJS, integrando serviços backend, respostas de IA em tempo real e recuperação de conhecimento com RAG.",
-    "Além da implementação, contribuo para decisões de arquitetura, padrões de desenvolvimento e processos de entrega. Uso revisão de código, documentação e testes de ponta a ponta para dar suporte à evolução dos sistemas e ao trabalho da equipe.",
+    "Além da implementação, contribuo para decisões de arquitetura, padrões de desenvolvimento e processos de entrega contínua. Ênfase na revisão do código, documentação e testes de ponta a ponta para dar suporte à evolução dos sistemas e ao trabalho da equipe.",
   ],
   philosophy:
-    "Interfaces bem pensadas. Sistemas confiáveis. Padrões de engenharia compartilhados.",
+    "Interfaces bem pensadas. Sistemas confiáveis. Padrões de qualidade compartilhados.",
 };
 export const experience: typeof english.experience = [
   {
@@ -82,7 +82,10 @@ const skillTranslations: Record<string, string> = {
 };
 export const skills = english.skills.map(({ category, items }) => ({
   category: skillTranslations[category] ?? category,
-  items: items.map((item) => skillTranslations[item] ?? item),
+  items: items.map((item) => ({
+    ...item,
+    label: skillTranslations[item.label] ?? item.label,
+  })),
 }));
 export const recognition: typeof english.recognition = {
   title: "Prêmio IEL de Talentos",
@@ -102,7 +105,7 @@ const translatedProjects: Record<
     period: "Reconhecido em 2026",
     category: "Plataforma institucional de IA",
     summary:
-      "Uma plataforma de IA que conecta assistentes conversacionais ao conhecimento institucional por meio de geração aumentada por recuperação (RAG).",
+      "Uma plataforma que centraliza o uso da Inteligência Artificial e o acesso a informações institucionais e educacionais em um único ambiente digital. Permite a criação de assistentes inteligentes personalizados para consultas, jornadas de aprendizagem e simulações interativas, combinando IA generativa e bases de conhecimento. Voltada para alunos e criadores de assistentes autorizados, a solução reúne acessibilidade, gestão de assistentes e acompanhamento de desempenho, proporcionando uma utilização mais organizada, eficiente e direcionada da Inteligência Artificial dentro da instituição.",
     role: "Desenvolvimento full stack · Integrações de IA · CI/CD",
     sections: [
       {

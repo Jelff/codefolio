@@ -556,12 +556,79 @@ a:focus-visible .arrow {
   line-height: 1.8;
   color: var(--color-muted);
 }
-#skills h3 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
+.skills-grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
 }
-#skills li {
-  font-size: 0.85rem;
+.skill-category {
+  min-width: 0;
+  border-top: 1px solid var(--color-rule);
+  padding-top: 1.5rem;
+}
+.skill-category h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  letter-spacing: -0.03em;
+}
+.skill-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(4.5rem, 1fr));
+  gap: 1.75rem 0.75rem;
+  margin-top: 2rem;
+}
+.skill-tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 7rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+.skill-tool-symbols {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  height: 3rem;
+}
+.skill-tool-icon {
+  display: block;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+.skill-tool-symbols:has(> :nth-child(2)) .skill-tool-icon {
+  width: 2rem;
+  height: 2.5rem;
+}
+.skill-tool-name {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.skill-tool:hover {
+  color: var(--color-accent);
+}
+.skill-practices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.75rem;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+.skill-practices li {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+.skill-practices li::before {
+  content: "+";
+  color: var(--color-accent);
 }
 #recognition {
   background: var(--color-background-secondary);
@@ -570,9 +637,6 @@ a:focus-visible .arrow {
   font-size: clamp(2rem, 3vw, 3rem);
   letter-spacing: -0.035em;
 }
-#recognition p.text-lg {
-  color: var(--color-accent);
-}
 .contact-statement {
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 6.25vw, 6rem);
@@ -580,7 +644,8 @@ a:focus-visible .arrow {
   letter-spacing: -0.05em;
   max-width: 60rem;
 }
-.email-link {
+.email-link,
+.contact-phone {
   font-family: var(--font-display);
   font-size: clamp(1.1rem, 2.6vw, 2rem);
   overflow-wrap: anywhere;
@@ -603,11 +668,221 @@ a:focus-visible .arrow {
 .case-header {
   border-top: 0;
 }
+.sofia-presentation {
+  --sofia-pointer-duration: 800ms;
+  --sofia-brand-sway: 18px;
+  --sofia-avatar-sway: -12px;
+  --sofia-brand-offset: clamp(3rem, 7vw, 6rem);
+  margin-top: clamp(2.5rem, 5vw, 5rem);
+}
+.sofia-scene {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  overflow: clip;
+  background: var(--color-background-secondary);
+  border-block: 1px solid var(--color-rule);
+  padding: clamp(1rem, 3vw, 3rem) clamp(1rem, 3vw, 3rem) 0;
+}
+.sofia-scene-background {
+  position: absolute;
+  inset: -1.5rem;
+  z-index: -2;
+  width: calc(100% + 3rem);
+  height: calc(100% + 3rem);
+  max-width: none;
+  object-fit: cover;
+  object-position: 60% center;
+  pointer-events: none;
+}
+.sofia-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-background) 65%, transparent),
+    color-mix(in srgb, var(--color-background) 40%, transparent) 45%,
+    transparent 75%
+  );
+  pointer-events: none;
+}
+.sofia-scene-caption {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  color: var(--color-paper);
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-paper) 25%, transparent);
+}
+.sofia-brand-layer {
+  z-index: 2;
+  min-width: 0;
+  padding-top: 1.5rem;
+}
+.sofia-brand-layer img {
+  width: 100%;
+  height: auto;
+}
+.sofia-scene-headline {
+  position: relative;
+  max-width: 17ch;
+  margin: 0.75rem auto 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  text-align: center;
+  text-wrap: balance;
+}
+.sofia-avatar-layer {
+  min-width: 0;
+  width: min(85%, 25rem);
+  justify-self: center;
+}
+.sofia-avatar-layer img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.sofia-award {
+  display: grid;
+  gap: 2rem;
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--color-rule);
+}
+.sofia-award-results {
+  --confetti-spread: 0.65;
+  --award-pulse-duration: 6s;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-content: center;
+}
+.sofia-award-result {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid var(--color-rule);
+  padding: 1rem;
+  text-align: left;
+  background: transparent;
+  transition:
+    background var(--motion-medium) ease,
+    border-color var(--motion-medium) ease;
+}
+.sofia-award-result:hover,
+.sofia-award-result:focus-visible {
+  border-color: var(--color-accent);
+  background: var(--color-background-secondary);
+}
+.sofia-award-result::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    110deg,
+    color-mix(in srgb, var(--color-accent) 16%, transparent),
+    color-mix(in srgb, var(--color-terracotta) 4%, transparent)
+  );
+  opacity: 0.35;
+  pointer-events: none;
+}
+.award-confetti {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  pointer-events: none;
+}
+.award-confetti-piece {
+  position: absolute;
+  width: 5px;
+  height: 9px;
+  background: var(--color-accent);
+  opacity: 0;
+}
+.award-confetti-piece:nth-child(3n) {
+  background: var(--color-paper);
+}
+.award-confetti-piece:nth-child(3n + 1) {
+  background: var(--color-olive);
+}
+.award-confetti-piece:nth-child(4n) {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+.sofia-award-place {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: var(--color-accent);
+}
+.sofia-demo {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+.sofia-demo-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.project-demo-frame {
+  aspect-ratio: 16 / 9;
+  display: grid;
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-rule);
+}
+.project-demo-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.project-demo-placeholder,
+.project-demo-load {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  padding: 1rem;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+.project-demo-symbol {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 5rem);
+  line-height: 1;
+  color: var(--color-accent);
+}
+.project-demo-load {
+  transition: background var(--motion-fast) ease;
+}
+.project-demo-load:hover,
+.project-demo-load:focus-visible {
+  background: var(--color-surface);
+}
 .case-header + .editorial-section {
   background: var(--color-background-secondary);
 }
 
 @media (min-width: 640px) {
+  .sofia-award-results {
+    --confetti-spread: 1;
+  }
   .eyebrow {
     font-size: 0.6875rem;
   }
@@ -623,6 +898,48 @@ a:focus-visible .arrow {
   }
 }
 @media (min-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .sofia-scene {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto 1fr;
+  }
+  .sofia-scene::before {
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-background) 75%, transparent),
+      color-mix(in srgb, var(--color-background) 45%, transparent) 50%,
+      transparent
+    );
+  }
+  .sofia-scene-caption {
+    grid-column: 1 / -1;
+  }
+  .sofia-brand-layer {
+    grid-area: 2 / 2 / 3 / 9;
+    align-self: center;
+    padding-block: 3rem;
+  }
+  .sofia-brand-motion {
+    width: 90%;
+    margin-left: var(--sofia-brand-offset);
+  }
+  .sofia-scene-headline {
+    margin: 1.5rem 0 0;
+    text-align: left;
+  }
+  .sofia-avatar-layer {
+    grid-area: 2 / 7 / 3 / -1;
+    width: min(100%, 32rem);
+    align-self: end;
+    padding-top: 2rem;
+    margin-bottom: -1.5rem;
+  }
+  .sofia-award {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3rem;
+  }
   .hero {
     min-height: min(920px, calc(100svh - var(--header-height)));
     display: flex;
@@ -670,6 +987,125 @@ a:focus-visible .arrow {
   }
 }
 @media (prefers-reduced-motion: no-preference) {
+  .skill-tool {
+    transition: color var(--motion-medium) ease;
+  }
+  .skill-tool-symbols {
+    transition: transform var(--motion-medium) var(--ease-editorial);
+  }
+  .skill-tool:hover .skill-tool-symbols {
+    transform: translateY(-3px);
+  }
+  .sofia-award-result::before {
+    animation: award-color-pulse var(--award-pulse-duration) ease-in-out
+      infinite;
+  }
+  .sofia-award-results li:nth-child(2) .sofia-award-result::before {
+    animation-delay: -3s;
+  }
+  @keyframes award-color-pulse {
+    0%,
+    100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+  .sofia-award-place {
+    transition: transform var(--motion-medium) var(--ease-editorial);
+  }
+  .sofia-award-result:hover .sofia-award-place,
+  .sofia-award-result:focus-visible .sofia-award-place {
+    transform: translateY(-3px);
+  }
+  .award-confetti-piece {
+    animation: award-confetti 1100ms var(--confetti-delay) both;
+  }
+  @keyframes award-confetti {
+    0% {
+      opacity: 0;
+      transform: translate(0, 0) rotate(0);
+    }
+    12% {
+      opacity: 1;
+    }
+    45% {
+      opacity: 1;
+      transform: translate(
+          calc(var(--confetti-x) * var(--confetti-spread)),
+          var(--confetti-y)
+        )
+        rotate(var(--confetti-turn));
+      animation-timing-function: ease-in;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(
+          calc(var(--confetti-x) * var(--confetti-spread)),
+          45px
+        )
+        rotate(calc(var(--confetti-turn) * 1.5));
+    }
+  }
+  @media (min-width: 1024px) {
+    .sofia-brand-motion,
+    .sofia-avatar-motion {
+      transition: transform var(--sofia-pointer-duration) var(--ease-editorial);
+    }
+    .sofia-brand-motion {
+      transform: perspective(900px)
+        translate3d(
+          calc(var(--scene-x, 0) * var(--sofia-brand-sway)),
+          calc(var(--scene-y, 0) * 10px),
+          0
+        )
+        rotate(calc(var(--scene-x, 0) * 3deg))
+        rotateY(calc(var(--scene-x, 0) * 4deg))
+        scale(var(--sofia-brand-scale, 1));
+      transform-origin: 75% 50%;
+    }
+    .sofia-avatar-motion {
+      transform: perspective(1100px)
+        translate3d(
+          calc(var(--scene-x, 0) * var(--sofia-avatar-sway)),
+          calc(var(--scene-y, 0) * -10px),
+          0
+        )
+        rotate(calc(var(--scene-x, 0) * -1.5deg))
+        rotateY(calc(var(--scene-x, 0) * -4deg))
+        scale(var(--sofia-avatar-scale, 1));
+      transform-origin: bottom center;
+    }
+    .sofia-scene[data-pointer-active] {
+      --sofia-brand-scale: 1.015;
+      --sofia-avatar-scale: 1.025;
+    }
+  }
+  @media (min-width: 1024px) {
+    @supports (animation-timeline: view()) {
+      .sofia-scene {
+        view-timeline-name: --sofia-scene;
+        view-timeline-axis: block;
+      }
+      .sofia-scene-background {
+        animation: sofia-scroll linear both;
+        animation-timeline: --sofia-scene;
+        animation-range: entry 0% exit 100%;
+      }
+      .sofia-scene-background {
+        --sofia-scroll-distance: -16px;
+      }
+      @keyframes sofia-scroll {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(var(--sofia-scroll-distance));
+        }
+      }
+    }
+  }
   .entrance,
   .route-enter {
     animation: arrive var(--motion-entrance) var(--ease-editorial) both;

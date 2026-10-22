@@ -1,6 +1,8 @@
 import { useLanguage } from "../i18n/context";
 import { Section } from "../components/Section";
 import { ProjectShowcase } from "../components/ProjectShowcase";
+import { SkillCategory } from "../components/SkillCategory";
+import { AwardResult } from "../components/AwardResult";
 
 export function About() {
   const { personal, ui } = useLanguage();
@@ -70,16 +72,9 @@ export function Skills() {
   const { skills, languages, ui } = useLanguage();
   return (
     <Section id="skills" title={ui.skills}>
-      <div className="grid gap-x-12 gap-y-12 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="skills-grid">
         {skills.map((group) => (
-          <div key={group.category}>
-            <h3 className="mb-5 text-xl">{group.category}</h3>
-            <ul className="space-y-2 text-muted">
-              {group.items.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
-          </div>
+          <SkillCategory key={group.category} group={group} />
         ))}
       </div>
       <p className="mt-14 border-t border-rule pt-7 text-sm leading-relaxed text-muted">
@@ -98,7 +93,11 @@ export function Recognition() {
         </p>
         <div>
           <h3 className="font-display text-3xl">{recognition.title}</h3>
-          <p className="mt-5 text-lg">{recognition.result}</p>
+          <ul className="sofia-award-results mt-5 max-w-xl">
+            {recognition.result.split("/").map((result) => (
+              <AwardResult key={result} result={result} />
+            ))}
+          </ul>
           <p className="mt-5 max-w-xl leading-relaxed text-muted">
             {recognition.description}
           </p>
