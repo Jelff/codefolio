@@ -1,3 +1,4 @@
+import { RollingText } from "../components/RollingText";
 import { Link, useParams } from "react-router-dom";
 import { useLanguage } from "../i18n/context";
 import { Arrow } from "../components/Arrow";
@@ -19,7 +20,7 @@ export function ProjectDetail() {
     <div key={project.slug} className="route-enter">
       <div className="editorial-section case-header">
         <Link to="/#work" className="text-link mb-16">
-          ← {ui.allWork}
+          ← <RollingText>{ui.allWork}</RollingText>
         </Link>
         <p className="mb-6 text-sm text-muted">
           {[project.category, project.period].filter(Boolean).join(" · ")}
@@ -52,7 +53,9 @@ export function ProjectDetail() {
       {next && (
         <nav className="editorial-section" aria-label={ui.projectNavigation}>
           <Link to={`/work/${next.slug}`} className="text-link">
-            {ui.nextCase} {next.name}
+            <RollingText>
+              {ui.nextCase} {next.name}
+            </RollingText>
             <Arrow />
           </Link>
         </nav>
@@ -69,7 +72,7 @@ function NotFoundContent() {
       <h1 className="section-intro">{ui.missing}</h1>
       <p className="mb-8 text-muted">{ui.missingDescription}</p>
       <Link to="/" className="text-link">
-        {ui.backHome} <Arrow />
+        <RollingText>{ui.backHome}</RollingText> <Arrow />
       </Link>
     </div>
   );

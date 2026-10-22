@@ -1,3 +1,4 @@
+import { RollingText } from "./RollingText";
 import { Link } from "react-router-dom";
 import type { Project } from "../data/projects";
 import { useLanguage } from "../i18n/context";
@@ -25,7 +26,7 @@ export function ProjectLink({
       <div className="min-w-0">
         <h3>
           <Link to={`/work/${project.slug}`} className="project-link">
-            <span>{project.name}</span>
+            <RollingText>{project.name}</RollingText>
             <Arrow />
           </Link>
         </h3>
@@ -47,7 +48,7 @@ export function ProjectLink({
               ))}
             </ul>
             <Link to={`/work/${project.slug}`} className="text-link mt-7">
-              {ui.readCase} <Arrow />
+              <RollingText>{ui.readCase}</RollingText> <Arrow />
             </Link>
           </>
         )}

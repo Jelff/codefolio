@@ -1,7 +1,10 @@
+import { RollingText } from "./RollingText";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../i18n/context";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ToolsMarquee } from "./ToolsMarquee";
+import { ThemeToggle } from "./ThemeToggle";
 
 const items = ["work", "about", "experience", "contact"] as const;
 
@@ -40,7 +43,7 @@ function NavigationLinks({ onNavigate }: { onNavigate?: () => void }) {
       }
       className="nav-link"
     >
-      {ui[id]}
+      <RollingText>{ui[id]}</RollingText>
     </Link>
   ));
 }
@@ -65,57 +68,52 @@ export function Navigation() {
     };
   }, []);
   return (
-    <header ref={headerRef} className="site-header">
+    <header
+      ref={headerRef}
+      className="site-header"
+      onKeyDown={(event) => {
+        if (event.key === "Escape") {
+          setOpen(false);
+          document.getElementById("menu-toggle")?.focus();
+        }
+      }}
+    >
       <Link
         to="/"
         className="identity"
         onClick={() => setOpen(false)}
-        aria-label={`${personal.name} — ${ui.home}`}
+        aria-label={`Jelffdev — ${personal.name} — ${ui.home}`}
       >
         <span className="identity-monogram" aria-hidden="true">
-          jm<span>.</span>
-        </span>
-        <span className="identity-name hidden lg:block">
-          Jefferson
-          <br />
-          Mendonça
+          Jelffdev.
         </span>
       </Link>
-      <nav aria-label={ui.mainNavigation} className="hidden xl:flex xl:gap-7">
-        <NavigationLinks />
-      </nav>
-      <div className="header-actions">
+      <ToolsMarquee />
+      <ThemeToggle />
+      <button
+        id="menu-toggle"
+        type="button"
+        className="menu-toggle"
+        aria-label={open ? ui.close : ui.menu}
+        aria-expanded={open}
+        aria-controls="mobile-menu"
+        onClick={() => setOpen(!open)}
+      >
+        <span className="menu-icon" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </span>
+      </button>
+      <nav
+        id="mobile-menu"
+        className="mobile-navigation"
+        aria-label={ui.mainNavigation}
+        hidden={!open}
+      >
+        <NavigationLinks onNavigate={() => setOpen(false)} />
         <LanguageSwitcher />
-        <div
-          className="xl:hidden"
-          onKeyDown={(event) => {
-            if (event.key === "Escape") {
-              setOpen(false);
-              document.getElementById("menu-toggle")?.focus();
-            }
-          }}
-        >
-          <button
-            id="menu-toggle"
-            type="button"
-            className="menu-toggle"
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? ui.close : ui.menu}
-          </button>
-          <nav
-            id="mobile-menu"
-            className="mobile-navigation"
-            aria-label={ui.mobileNavigation}
-            hidden={!open}
-          >
-            <NavigationLinks onNavigate={() => setOpen(false)} />
-          </nav>
-        </div>
-      </div>
-      <div className="reading-progress" aria-hidden="true" />
+      </nav>
     </header>
   );
 }

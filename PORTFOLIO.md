@@ -38,8 +38,8 @@ ESLint, Prettier, duplication detection and the production build.
 
 React Router is the only added runtime dependency. It handles case-study URLs,
 back/forward navigation and unknown paths. Motion uses CSS; no animation or UI
-library is required. Playfair Display and Source Serif 4 load through Google
-Fonts with `display=swap` and Georgia fallbacks. No backend, tracking or form
+library is required. Space Grotesk loads throughout the interface through Google
+Fonts with `display=swap` and sans-serif fallbacks. No backend, tracking or form
 service is used.
 
 ## Content boundaries

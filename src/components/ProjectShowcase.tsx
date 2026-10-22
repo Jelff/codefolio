@@ -1,3 +1,4 @@
+import { RollingText } from "./RollingText";
 import { useState } from "react";
 import type { Project } from "../data/projects";
 import { useLanguage } from "../i18n/context";
@@ -63,7 +64,12 @@ function SofiaStory({ project }: { project: Project }) {
             aria-controls={`sofia-chapter-${project.slug}`}
             onClick={() => setChapter(index)}
           >
-            <span aria-hidden="true">0{index + 1}</span> {label}
+            <RollingText>
+              <span className="chapter-index" aria-hidden="true">
+                0{index + 1}
+              </span>
+              {label}
+            </RollingText>
           </button>
         ))}
       </div>

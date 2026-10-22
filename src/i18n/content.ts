@@ -6,8 +6,7 @@ const en = {
   ...english,
   projects,
   ui: {
-    heroFirst: "Engineering",
-    heroSecond: "with intention.",
+    heroPortraitAlt: "Silhouette of Jefferson at sunset, looking at his phone",
     portfolio: "Professional portfolio",
     discipline: "Interfaces / Systems / Intelligence",
     scroll: "Scroll to explore",
@@ -81,8 +80,8 @@ const en = {
 const pt: typeof en = {
   ...portuguese,
   ui: {
-    heroFirst: "Engenharia",
-    heroSecond: "com intenção.",
+    heroPortraitAlt:
+      "Silhueta de Jefferson ao pôr do sol, olhando para o celular",
     portfolio: "Portfólio profissional",
     discipline: "Interfaces / Sistemas / Inteligência",
     scroll: "Role para explorar",

@@ -1,3 +1,4 @@
+import { RollingText } from "./RollingText";
 import { useState } from "react";
 import { useLanguage } from "../i18n/context";
 
@@ -38,7 +39,7 @@ export function ProjectDemo({ youtubeVideoId }: { youtubeVideoId?: string }) {
             <span className="project-demo-symbol" aria-hidden="true">
               ▷
             </span>
-            <span>{ui.demoLoad}</span>
+            <RollingText>{ui.demoLoad}</RollingText>
           </button>
         ) : (
           <div className="project-demo-placeholder">

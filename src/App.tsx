@@ -1,6 +1,5 @@
 import { LanguageProvider } from "./i18n/LanguageProvider";
 import { useLanguage } from "./i18n/context";
-import { useReadingProgress } from "./hooks/useReadingProgress";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { Home } from "./pages/Home";
@@ -21,7 +20,6 @@ function Portfolio() {
       <a href="#main-content" className="skip-link">
         {ui.skip}
       </a>
-      <ReadingProgress />
       <Navigation />
 
       <main id="main-content" tabIndex={-1} className="main-content">
@@ -33,9 +31,4 @@ function Portfolio() {
       </main>
     </BrowserRouter>
   );
-}
-
-function ReadingProgress() {
-  useReadingProgress();
-  return null;
 }

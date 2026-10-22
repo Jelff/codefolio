@@ -1,3 +1,4 @@
+import { RollingText } from "../components/RollingText";
 import { useLanguage } from "../i18n/context";
 import { Section } from "../components/Section";
 import { Arrow } from "../components/Arrow";
@@ -16,7 +17,7 @@ export function Contact() {
           href={`mailto:${personal.email}`}
           className="email-link inline-flex items-center gap-4"
         >
-          {personal.email}
+          <RollingText>{personal.email}</RollingText>
           <Arrow />
         </a>
         <p className="contact-phone mt-4">{personal.phone.display}</p>
@@ -38,7 +39,7 @@ export function Contact() {
               rel="noopener noreferrer"
               className="text-link"
             >
-              {link.label}
+              <RollingText>{link.label}</RollingText>
               <Arrow />
               <span className="sr-only">{ui.external}</span>
             </a>
@@ -54,13 +55,15 @@ export function Contact() {
             rel="noopener noreferrer"
             className="text-link"
           >
-            {link.label}
+            <RollingText>{link.label}</RollingText>
             <Arrow />
             <span className="sr-only">{ui.external}</span>
           </a>
         ))}
         <a href={personal.resume} download className="text-link">
-          {ui.resume} <span className="text-xs">{ui.pdfLanguage}</span>
+          <RollingText>
+            {ui.resume} <span className="text-xs">{ui.pdfLanguage}</span>
+          </RollingText>
           <Arrow />
         </a>
       </div>
@@ -70,7 +73,7 @@ export function Contact() {
         </p>
         <p>{personal.location}</p>
         <a href="#main-content" className="footer-top">
-          {ui.backTop} ↑
+          <RollingText>{ui.backTop}</RollingText> ↑
         </a>
       </footer>
     </Section>

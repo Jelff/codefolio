@@ -1,3 +1,4 @@
+import { RollingText } from "./RollingText";
 import { useLanguage } from "../i18n/context";
 
 export function LanguageSwitcher() {
@@ -11,8 +12,12 @@ export function LanguageSwitcher() {
       lang={next === "pt" ? "pt-BR" : "en"}
       aria-label={next === "en" ? "Switch to English" : "Mudar para português"}
     >
-      <span aria-hidden="true">{language === "pt" ? "PT / " : "EN / "}</span>
-      {next === "en" ? "English" : "Português"}
+      <RollingText>
+        <span className="language-current" aria-hidden="true">
+          {language === "pt" ? "PT / " : "EN / "}
+        </span>
+        {next === "en" ? "English" : "Português"}
+      </RollingText>
     </button>
   );
 }

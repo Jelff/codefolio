@@ -1,9 +1,12 @@
+import { RollingText } from "../components/RollingText";
 import { useLanguage } from "../i18n/context";
 import { Arrow } from "../components/Arrow";
 import { LocalTime } from "../components/LocalTime";
+import { HeroPortrait } from "../components/HeroPortrait";
 
 export function Hero() {
   const { personal, ui } = useLanguage();
+  const [role, specialty] = personal.role.split(" · ");
   return (
     <section id="top" className="hero" aria-label={ui.introduction}>
       <div className="hero-overline eyebrow entrance">
@@ -11,10 +14,13 @@ export function Hero() {
         <span>{personal.location}</span>
       </div>
       <div className="hero-title entrance">
-        <p className="eyebrow mb-7 text-muted">{personal.role}</p>
+        <HeroPortrait />
         <h1>
-          {ui.heroFirst}
-          <em>{ui.heroSecond}</em>
+          <span>{role}</span>
+          <span>
+            <span className="sr-only"> · </span>
+            {specialty}
+          </span>
         </h1>
       </div>
       <div className="hero-bottom entrance">
@@ -26,17 +32,19 @@ export function Hero() {
         </div>
         <div className="hero-actions">
           <a href="#work" className="primary-link">
-            {ui.explore} <Arrow />
+            <RollingText>{ui.explore}</RollingText> <Arrow />
           </a>
           <a href={personal.resume} className="text-link" download>
-            {ui.resume} <span className="text-xs">{ui.pdfLanguage}</span>
+            <RollingText>
+              {ui.resume} <span className="text-xs">{ui.pdfLanguage}</span>
+            </RollingText>
             <Arrow />
           </a>
         </div>
       </div>
       <div className="hero-foot eyebrow">
         <a href="#work" className="scroll-cue">
-          ↓ <span>{ui.scroll}</span>
+          ↓ <RollingText>{ui.scroll}</RollingText>
         </a>
         <span className="hidden sm:block">{ui.discipline}</span>
         <LocalTime />
