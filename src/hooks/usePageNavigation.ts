@@ -10,13 +10,13 @@ export function usePageNavigation(title: string) {
     const frame = requestAnimationFrame(() => {
       if (hash) {
         const target = document.getElementById(hash.slice(1));
-        target?.scrollIntoView();
         target?.focus({ preventScroll: true });
+        target?.scrollIntoView();
       } else {
-        window.scrollTo({ top: 0, behavior: "instant" });
         document
           .querySelector<HTMLElement>("main")
           ?.focus({ preventScroll: true });
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
       }
     });
     return () => cancelAnimationFrame(frame);

@@ -68,8 +68,8 @@ export function SofiaPresentation() {
           </p>
         </div>
         <ul className="sofia-award-results">
-          {recognition.result.split("/").map((result) => (
-            <AwardResult key={result} result={result} />
+          {recognition.result.split("/").map((result, index) => (
+            <AwardResult key={result} result={result} index={index} />
           ))}
         </ul>
       </section>

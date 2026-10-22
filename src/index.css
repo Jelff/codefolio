@@ -59,6 +59,7 @@ button {
 a:focus-visible,
 button:focus-visible,
 main:focus-visible,
+section:focus-visible,
 summary:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 5px;
@@ -193,7 +194,8 @@ section:focus:not(:focus-visible) {
   margin-inline: auto;
   border-inline: 2px solid var(--color-accent);
 }
-.main-content:focus-visible {
+.main-content:focus-visible,
+.editorial-section:focus-visible {
   outline-offset: -2px;
 }
 .eyebrow {

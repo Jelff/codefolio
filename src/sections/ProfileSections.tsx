@@ -94,8 +94,8 @@ export function Recognition() {
         <div>
           <h3 className="font-display text-3xl">{recognition.title}</h3>
           <ul className="sofia-award-results mt-5 max-w-xl">
-            {recognition.result.split("/").map((result) => (
-              <AwardResult key={result} result={result} />
+            {recognition.result.split("/").map((result, index) => (
+              <AwardResult key={result} result={result} index={index} />
             ))}
           </ul>
           <p className="mt-5 max-w-xl leading-relaxed text-muted">

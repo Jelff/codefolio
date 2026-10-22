@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useLanguage } from "../i18n/context";
 
 const particles = Array.from(
@@ -15,17 +15,54 @@ const particles = Array.from(
   },
 );
 
-export function AwardResult({ result }: { result: string }) {
+export function AwardResult({
+  result,
+  index,
+}: {
+  result: string;
+  index: number;
+}) {
   const { ui } = useLanguage();
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const [celebrating, setCelebrating] = useState(false);
   const [place, level] = result.split("·");
 
   useEffect(() => {
+    const button = buttonRef.current;
+    if (!button) return;
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const reset = () => setCelebrating(false);
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const cancel = () => {
+      clearTimeout(timer);
+      timer = undefined;
+    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        cancel();
+        if (!entry || entry.intersectionRatio < 0.5 || media.matches) return;
+        // Let each burst finish before the next card celebrates.
+        timer = setTimeout(
+          () => {
+            setCelebrating(true);
+            observer.disconnect();
+          },
+          150 + index * 1300,
+        );
+      },
+      { threshold: 0.5 },
+    );
+    observer.observe(button);
+    const reset = () => {
+      cancel();
+      setCelebrating(false);
+    };
     media.addEventListener("change", reset);
-    return () => media.removeEventListener("change", reset);
-  }, []);
+    return () => {
+      cancel();
+      observer.disconnect();
+      media.removeEventListener("change", reset);
+    };
+  }, [index]);
 
   const celebrate = () => {
     if (
@@ -40,6 +77,7 @@ export function AwardResult({ result }: { result: string }) {
   return (
     <li>
       <button
+        ref={buttonRef}
         type="button"
         className="sofia-award-result"
         aria-label={`${ui.celebrateAward}: ${place?.trim()}, ${level?.trim()}`}
