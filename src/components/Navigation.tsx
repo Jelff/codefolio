@@ -1,3 +1,4 @@
+import { Accessibility } from "./Accessibility";
 import { RollingText } from "./RollingText";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -72,7 +73,7 @@ export function Navigation() {
       ref={headerRef}
       className="site-header"
       onKeyDown={(event) => {
-        if (event.key === "Escape") {
+        if (event.key === "Escape" && open) {
           setOpen(false);
           document.getElementById("menu-toggle")?.focus();
         }
@@ -105,6 +106,7 @@ export function Navigation() {
           <span />
         </span>
       </button>
+      <Accessibility />
       <nav
         id="mobile-menu"
         className="mobile-navigation"

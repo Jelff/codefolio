@@ -171,25 +171,6 @@ section:focus:not(:focus-visible) {
   content: "/";
   color: var(--color-accent);
 }
-@media (prefers-reduced-motion: no-preference) {
-  .tools-marquee-window {
-    overflow: hidden;
-  }
-  .tools-marquee-list[aria-hidden="true"] {
-    display: flex;
-  }
-  .tools-marquee-track {
-    animation: tools-marquee 60s linear infinite;
-  }
-  .tools-marquee-window:hover .tools-marquee-track {
-    animation-play-state: paused;
-  }
-  @keyframes tools-marquee {
-    to {
-      transform: translateX(-50%);
-    }
-  }
-}
 .theme-toggle,
 .menu-toggle {
   display: flex;
@@ -204,7 +185,6 @@ section:focus:not(:focus-visible) {
   color: var(--color-paper);
 }
 .theme-toggle {
-  pointer-events: none;
   font-size: 0.625rem;
   letter-spacing: 0.12em;
 }
@@ -1454,4 +1434,52 @@ button,
 
 .chapter-controls button:hover span {
   color: var(--color-muted);
+}
+
+.accessibility {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  min-width: 0;
+  border-top: var(--frame-border);
+  background: var(--color-background-secondary);
+}
+.accessibility > div {
+  max-height: 45dvh;
+  overflow-y: auto;
+}
+@media (min-width: 1024px) {
+  .accessibility {
+    grid-row: 2;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+:root[data-a11y-largetext] {
+  font-size: 125%;
+}
+:root[data-a11y-underline] a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+:root[data-a11y-reducemotion] {
+  scroll-behavior: auto;
+}
+:root[data-a11y-reducemotion] *,
+:root[data-a11y-reducemotion] *::before,
+:root[data-a11y-reducemotion] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+:root[data-a11y-reducemotion]
+  :is(.sofia-brand-motion, .sofia-avatar-motion, .arrow) {
+  transform: none !important;
+}
+.tools-marquee-window {
+  scrollbar-width: auto;
+}
+.tools-marquee-window::-webkit-scrollbar {
+  display: initial;
 }
